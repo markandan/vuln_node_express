@@ -1,0 +1,19 @@
+name: build and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: action/checkout@v2
+      - name: Install node 14.x
+        uses: action/setup-node@v2
+        with:
+          node_version: 14.x
+      - name: Install dependencies
+        run: npm clean-install
